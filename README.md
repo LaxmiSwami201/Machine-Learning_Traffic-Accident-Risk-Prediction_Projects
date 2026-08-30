@@ -1,216 +1,238 @@
 # Machine-Learning_Traffic-Accident-Risk-Prediction_Projects
-# 🎬 Movie Rating Analysis Dashboard – Power BI Project
+# 🚦 Traffic Accident Risk Prediction – Machine Learning Project
 
 ## 📌 Project Overview
 
-The **Movie Rating Analysis Dashboard** is an interactive Business Intelligence project developed using **Microsoft Power BI**. The project analyzes movie information, user activity, and ratings to generate meaningful insights through interactive dashboards and visualizations.
+The **Traffic Accident Risk Prediction** project is a Machine Learning-based predictive analytics project designed to identify and predict the **risk level of traffic accidents** based on various road, vehicle, environmental, and traffic-related factors.
 
-The main objective of this project is to transform raw movie rating data into an interactive dashboard that helps users understand **movie popularity, average ratings, genres, user activity, and rating trends**.
+The main objective of this project is to use historical accident data and Machine Learning techniques to identify patterns associated with accident risk and predict whether a given situation has **Low, Medium, or High accident risk**.
+
+This project demonstrates the complete Machine Learning workflow, including **data preprocessing, exploratory data analysis, feature engineering, model training, model evaluation, and prediction**.
 
 ## 🎯 Project Objectives
 
-* Analyze movie ratings and popularity.
-* Identify the highest-rated movies.
-* Analyze movies based on different genres.
-* Understand user rating activity.
-* Calculate average movie ratings.
-* Identify the most reviewed movies.
-* Analyze movie releases by year.
-* Create an interactive and user-friendly dashboard.
+* Analyze historical traffic accident data.
+* Identify the major factors associated with accident risk.
+* Perform data cleaning and preprocessing.
+* Explore relationships between accident-related features.
+* Train Machine Learning classification models.
+* Compare model performance using evaluation metrics.
+* Predict accident risk levels for new data.
+* Provide insights that can support road safety and traffic management.
 
 ## 🛠️ Tools & Technologies
 
-* **Microsoft Power BI**
-* Power Query
-* DAX
-* Data Modeling
-* Data Cleaning
-* Data Transformation
-* Relationships
-* Interactive Visualizations
-* Slicers and Filters
+* **Python**
+* **Pandas**
+* **NumPy**
+* **Matplotlib**
+* **Seaborn**
+* **Scikit-learn**
+* Jupyter Notebook
+* Exploratory Data Analysis (EDA)
+* Machine Learning
+* Classification Algorithms
 
-## 🗄️ Dataset
+## 📂 Dataset
 
-The project uses three main tables:
+The dataset contains historical traffic accident information and factors that may influence accident risk.
 
-### 👤 Users
+Important features may include:
 
-Contains information about users.
+| Feature           | Description                                |
+| ----------------- | ------------------------------------------ |
+| `Weather`         | Weather conditions during the accident     |
+| `Road_Type`       | Type of road                               |
+| `Traffic_Density` | Level of traffic                           |
+| `Speed_Limit`     | Speed limit of the road                    |
+| `Visibility`      | Visibility conditions                      |
+| `Road_Condition`  | Condition of the road                      |
+| `Vehicle_Type`    | Type of vehicle involved                   |
+| `Time_of_Day`     | Time when the accident occurred            |
+| `Accident_Risk`   | Target variable representing accident risk |
 
-* User ID
-* User Name
-* City
-* Phone Number
+## 🔄 Machine Learning Workflow
 
-### 🎬 Movies
+### 1. Data Loading
 
-Contains information about movies.
+The dataset was imported into Python using Pandas.
 
-* Movie ID
-* Movie Title
-* Genre
-* Release Year
+```python
+import pandas as pd
 
-### ⭐ Ratings
-
-Contains information about movie ratings.
-
-* Rating ID
-* User ID
-* Movie ID
-* Rating
-* Rating Date
-
-## 🔗 Data Model
-
-The three tables were connected using relationships between their primary and foreign keys.
-
-```text
-Users                    Movies
-  |                         |
-  | User_ID                 | Movie_ID
-  ↓                         ↓
-              Ratings
+df = pd.read_csv("traffic_accident_data.csv")
 ```
 
-The **Ratings** table acts as the central table connecting users and movies.
+### 2. Data Understanding
 
-## 🔄 Project Workflow
+The dataset was explored using:
 
-### 1. Data Import
+* `head()`
+* `shape`
+* `info()`
+* `describe()`
+* `isnull().sum()`
+* `value_counts()`
 
-The movie, user, and rating datasets were imported into **Power BI Desktop**.
+This helped understand the structure, data types, missing values, and distribution of the variables.
 
-### 2. Data Cleaning & Transformation
+### 3. Data Cleaning
 
-**Power Query** was used to:
+The dataset was prepared for Machine Learning by:
 
-* Remove duplicate records.
-* Handle missing values.
-* Correct data types.
-* Clean inconsistent data.
-* Format columns.
-* Prepare the data for analysis.
+* Handling missing values.
+* Removing duplicate records.
+* Correcting data types.
+* Handling inconsistent values.
+* Detecting outliers.
+* Preparing categorical and numerical features.
 
-### 3. Data Modeling
+### 4. Exploratory Data Analysis
 
-Relationships were created between the **Users, Movies, and Ratings** tables to build an effective data model.
+EDA was performed to identify relationships and patterns between accident risk and factors such as:
 
-### 4. DAX Calculations
+* Weather conditions.
+* Traffic density.
+* Road conditions.
+* Speed limits.
+* Visibility.
+* Time of day.
+* Vehicle type.
 
-DAX measures were created to calculate important business metrics such as:
+Visualizations were created using **Matplotlib and Seaborn**.
 
-* Total Movies
-* Total Users
-* Total Ratings
-* Average Rating
-* Highest Rating
-* Lowest Rating
+### 5. Feature Engineering & Preprocessing
 
-Example:
+The features were prepared for Machine Learning using techniques such as:
 
-```DAX
-Total Ratings = COUNT(Ratings[rating])
-```
+* Encoding categorical variables.
+* Scaling numerical variables where required.
+* Feature selection.
+* Splitting data into training and testing sets.
 
-```DAX
-Average Rating = AVERAGE(Ratings[rating])
-```
+The dataset was divided into:
 
-### 5. Dashboard Development
+* **Training Set** – Used to train the model.
+* **Testing Set** – Used to evaluate the model on unseen data.
 
-Power BI visualizations were used to present the analysis in an interactive format.
+## 🤖 Machine Learning Models
 
-## 📊 Dashboard Features
+Classification algorithms were used to predict accident risk.
 
-The dashboard includes important KPI cards such as:
+### 🌳 Decision Tree
 
-* 🎬 **Total Movies**
-* 👤 **Total Users**
-* ⭐ **Total Ratings**
-* 📊 **Average Rating**
-* 🏆 **Highest Rated Movie**
-* 🔥 **Most Reviewed Movie**
+A Decision Tree classifier was used to identify decision rules based on traffic and environmental conditions.
 
-### 📈 Visualizations
+### 📈 Logistic Regression
 
-The dashboard contains visualizations such as:
+Logistic Regression was used as a baseline classification model for predicting accident risk categories.
 
-* **Movies by Genre** – Shows the distribution of movies across genres.
-* **Rating Distribution** – Shows how ratings are distributed.
-* **Movies Released by Year** – Displays movie release trends over time.
-* **Top 10 Movies by Average Rating** – Identifies highly rated movies.
-* **Genre-wise Average Rating** – Compares average ratings across genres.
-* **Most Reviewed Movies** – Identifies movies receiving the highest number of ratings.
-* **User Activity by City** – Shows rating activity across different cities.
+### 🛡️ Support Vector Machine (SVM)
 
-### 🎛️ Interactive Filters
+SVM was used to identify the optimal decision boundary between different accident-risk classes.
 
-Slicers and filters allow users to interact with the dashboard and analyze the data based on:
+The models were compared to determine which algorithm provided the best predictive performance.
 
-* Genre
-* Movie
-* Release Year
-* City
-* Rating
-* Rating Date
+## 📊 Model Evaluation
+
+The trained models were evaluated using multiple performance metrics:
+
+* **Accuracy**
+* **Precision**
+* **Recall**
+* **F1-Score**
+* **Confusion Matrix**
+
+The **Confusion Matrix** was used to understand correct and incorrect predictions for each risk category.
+
+## 🔍 Key Analysis
+
+The project analyzes questions such as:
+
+* Does high traffic density increase accident risk?
+* How does weather affect accident risk?
+* Which road conditions are associated with higher risk?
+* Does visibility influence accident probability?
+* Which time periods have higher accident risk?
+* Does speed limit contribute to accident severity/risk?
+* Which Machine Learning model performs best?
 
 ## 💡 Key Insights
 
-The dashboard helps identify:
+The analysis helps identify important patterns in traffic accident risk, including:
 
-* Which movies have the highest average ratings.
-* Which genres are most popular.
-* Which movies receive the most ratings.
-* How movie releases have changed over the years.
-* Rating distribution across movies.
-* Which users or cities show higher rating activity.
-* Which genres have better average ratings.
+* Environmental conditions that are associated with higher accident risk.
+* The impact of traffic density on accident risk.
+* The relationship between road conditions and accident occurrence.
+* The effect of visibility and weather conditions.
+* Traffic and road characteristics that contribute to higher-risk situations.
 
-## 📈 Business Value
+## 🚨 Real-World Applications
 
-This project demonstrates how **Power BI can transform raw movie data into actionable insights**.
+The prediction system can potentially support:
 
-The dashboard can help movie platforms, production companies, and entertainment businesses understand **audience preferences, movie performance, genre popularity, and user engagement**.
+* 🚦 Traffic management systems.
+* 🛣️ Road safety planning.
+* 🚑 Emergency response planning.
+* 📍 Identification of high-risk road conditions.
+* 🚗 Driver safety systems.
+* 🏙️ Smart-city traffic management.
+* ⚠️ Early identification of potentially dangerous traffic conditions.
 
-These insights can support decisions related to **movie promotion, content strategy, and audience targeting**.
+The project is intended as a **predictive analytics and decision-support system**, not as a replacement for professional road-safety or emergency-response decisions.
+
+## 📈 Business & Social Value
+
+Traffic accident prediction can help transportation authorities and organizations identify **high-risk conditions and patterns** before accidents occur.
+
+By understanding the factors associated with increased risk, organizations can make better decisions regarding **traffic control, road safety measures, resource allocation, and preventive planning**.
 
 ## 🚀 Skills Demonstrated
 
-* Power BI
-* Power Query
-* DAX
+* Python Programming
+* Pandas
+* NumPy
 * Data Cleaning
-* Data Transformation
-* Data Modeling
-* Relationships
-* KPI Creation
+* Data Preprocessing
+* Exploratory Data Analysis
+* Feature Engineering
+* Feature Encoding
 * Data Visualization
-* Interactive Dashboards
-* Business Intelligence
-* Analytical Thinking
+* Machine Learning
+* Classification
+* Logistic Regression
+* Decision Tree
+* Support Vector Machine (SVM)
+* Model Evaluation
+* Confusion Matrix
+* Accuracy, Precision, Recall & F1-Score
+* Predictive Analytics
 
 ## 📂 Project Structure
 
 ```text
-Movie-Rating-PowerBI/
+Traffic-Accident-Risk-Prediction/
 │
-├── Movie_Rating_Dashboard.pbix
-├── Movie_Rating_Data.xlsx
+├── Traffic_Accident_Risk_Prediction.ipynb
+├── traffic_accident_data.csv
 ├── README.md
 └── screenshots/
-    └── movie_rating_dashboard.png
+    ├── eda.png
+    ├── confusion_matrix.png
+    └── model_performance.png
 ```
 
 ## 🏁 Conclusion
 
-The **Movie Rating Analysis Dashboard** successfully converts movie, user, and rating data into an interactive Power BI report.
+The **Traffic Accident Risk Prediction** project demonstrates how Machine Learning can be applied to historical traffic data to identify patterns and predict accident risk.
 
-The project demonstrates practical knowledge of **Power Query, DAX, data modeling, relationships, KPI development, and data visualization**. It provides meaningful insights into movie ratings, genres, user activity, and popularity, making it a strong **Data Analyst / Business Intelligence portfolio project**.
+The project follows a complete end-to-end Machine Learning workflow, from **data cleaning and EDA to preprocessing, model training, evaluation, and prediction**.
+
+It demonstrates practical skills in **Python, Pandas, Scikit-learn, Machine Learning classification, data visualization, and predictive analytics**, making it a strong project for a **Data Analyst / Machine Learning portfolio**.
 
 ## 👩‍💻 Author
 
 **Laxmi Swami**
 
-*Data Analyst | Power BI | SQL | Excel | Python*
+*Data Analyst | Python | SQL | Power BI | Excel | Machine Learning*
+
